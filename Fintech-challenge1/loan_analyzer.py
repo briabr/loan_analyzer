@@ -48,6 +48,7 @@ Using more detailed data on one of these loans, follow these steps to calculate 
     **Future Value**: The amount of money the borrower has to pay back upon maturity of the loan (a.k.a. "Face Value")
     **Remaining Months**: The remaining maturity (in months) before the loan needs to be fully repaid.
 
+print(x)
 2. Use the formula for Present Value to calculate a "fair value" of the loan. Use a minimum required return of 20% as the discount rate.
 3. Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
     a. If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
@@ -68,6 +69,15 @@ loan = {
 # @TODO: Use get() on the dictionary of additional information to extract the Future Value and Remaining Months on the loan.
 # Print each variable.
 # YOUR CODE HERE!
+
+
+future_value = loan.get("future_value")
+print(f"The future value is {future_value}")
+
+remaining_months = loan.get("remaining_months")
+print(f"The remaining months are {remaining_months}")
+
+
 
 
 # @TODO: Use the formula for Present Value to calculate a "fair value" of the loan.

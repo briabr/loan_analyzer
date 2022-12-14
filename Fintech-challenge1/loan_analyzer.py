@@ -98,7 +98,7 @@ print(f"the present value is {present_value: .2f}")
 loan_price= loan.get("loan_price")
 if present_value >= loan_price:
     print(f"the loan is worth at least the cost to buy it")
-elif present_value < loan_price:
+if  present_value < loan_price:
     print("the loan is too expensive and not worth the price")
 
 
@@ -127,11 +127,16 @@ new_loan = {
 #    This function should include parameters for `future_value`, `remaining_months`, and the `annual_discount_rate`
 #    The function should return the `present_value` for the loan.
 # YOUR CODE HERE!
+def presentValue(future_value,remaining_months,annual_discount_rate ):
+    present_value = future_value/(1+(0.2/12)) ** remaining_months
+    return present_value
 
 
 # @TODO: Use the function to calculate the present value of the new loan given below.
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
 # YOUR CODE HERE!
+annual_discount_rate = 0.2
+presentValue(new_loan.get("future_value"),new_loan.get("remaining_months"),annual_discount_rate)
 print(f"The present value of the loan is: {present_value}")
 
 
@@ -175,12 +180,17 @@ loans = [
 
 # @TODO: Create an empty list called `inexpensive_loans`
 # YOUR CODE HERE!
+inexpensive_loans = []
 
 # @TODO: Loop through all the loans and append any that cost $500 or less to the `inexpensive_loans` list
 # YOUR CODE HERE!
+for loan in loans:
+    if loan["loan_price"] <= 500 :
+        inexpensive_loans.append(loan)
 
 # @TODO: Print the `inexpensive_loans` list
 # YOUR CODE HERE!
+print(inexpensive_loans)
 
 
 """Part 5: Save the results.
@@ -206,3 +216,14 @@ output_path = Path("inexpensive_loans.csv")
 # @TODO: Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
 # YOUR CODE HERE!
+def load_csv(csvpath):
+    with open(output_path, "w") as csvfile:
+        data = []
+        csvwriter = csv.writer(csvfile, delimiter=",")
+        csvwriter.writerow(header)
+        # Write the CSV data
+        for row in inexpensive_loans:
+            csvwriter.writerow(row.values())
+        #     data.append(row)
+        # csvwriter.writerow()
+load_csv(output_path)

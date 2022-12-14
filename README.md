@@ -23,4 +23,7 @@ Save the Results
 Then upload your final code to GitHub.
 ```
 
+## GitHub Repo
+https://github.com/briabr/loan_analyzer
+
 
